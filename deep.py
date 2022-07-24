@@ -48,6 +48,5 @@ class Deep:
             temp = x_input.reshape((1, self.n_steps, self.n_features))
             yhat = self.model.predict(temp, verbose=0)[0][0]
             predictions.append(float(yhat))
-            x_input = x_input[1:]
-            x_input = np.append(x_input, [yhat])
+            x_input = np.append(x_input[1:], [yhat])
         return predictions
