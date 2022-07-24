@@ -1,5 +1,4 @@
 # import pdr required libs
-from distutils.command.config import config
 from pandas_datareader import data as pdr
 from datetime import datetime, timedelta
 import yfinance as yf
