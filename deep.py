@@ -1,13 +1,13 @@
 # import DL required libs
 import numpy as np
-from tensorflow.keras.models import Sequential
+from tensorflow.keras.models import Sequential, load_model
 from tensorflow.keras.layers import LSTM, Dense, Bidirectional, Dropout
 
 class Deep:
     def __init__(self, config_dict):
         self.config = config_dict
 
-    def load(self):
+    def load_config(self):
         self.df = self.config["df"]
         self.n_steps = self.config["n_steps"]
         self.n_features = self.config["n_features"]
@@ -27,6 +27,9 @@ class Deep:
 
         X, self.y = np.array(X), np.array(Y)
         self.X = X.reshape((X.shape[0], X.shape[1], 1))
+
+    def load_model(self):
+        self.model = load_model("saved_models/vanilla_lstm.h5")
 
     def build(self):
         model = Sequential()

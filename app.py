@@ -25,14 +25,12 @@ def get_predictions():
     )
 
 if __name__ == "__main__":
-    config_dict = {"ticker": "O39.SI", "n_steps": 7, "n_features": 1, "forecast_period": 2}
+    config_dict = {"ticker": "O39.SI", "n_steps": 24, "n_features": 1, "forecast_period": 3}
     start, end = (datetime.today() - timedelta(days=365)).strftime("%Y-%m-%d"), datetime.today().strftime("%Y-%m-%d")
     data = pdr.get_data_yahoo(config_dict["ticker"], start=start, end=end)
     close = data["Close"]
     config_dict["df"] = close
     model = Deep(config_dict)
-    model.load()
-    model._preprocess_data()
-    model.build()
-    model.train()
+    model.load_config()
+    model.load_model()
     app.run(host="0.0.0.0", port=5000)
