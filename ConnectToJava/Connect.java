@@ -11,7 +11,7 @@ public class Connect {
 
 	public static void Results(){
 		try {
-	        URL url = new URL("http://localhost:5000/getPredictions");
+	        URL url = new URL("http://localhost:5000/getPredictions/aapl/5");
 	        HttpURLConnection conn = (HttpURLConnection) url.openConnection();
 	        conn.setRequestMethod("GET");
 	        conn.setRequestProperty("Accept", "application/json");

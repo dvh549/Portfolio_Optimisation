@@ -68,6 +68,7 @@ class Deep:
         return self.predict()
 
 if __name__ == "__main__":
+    # test code
     ticker = input("Which ticker would you like to predict for? ")
     start, end = (datetime.today() - timedelta(days=365)).strftime("%Y-%m-%d"), datetime.today().strftime("%Y-%m-%d")
     data = pdr.get_data_yahoo(ticker, start=start, end=end)
