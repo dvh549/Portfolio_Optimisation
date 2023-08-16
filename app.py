@@ -29,9 +29,11 @@ def get_predictions(ticker, days_to_forecast):
     else:
         config_dict["df"] = data["Close"]
         predictions = initialise_model_and_predict(config_dict)
+        timestamps = [(datetime.today() + timedelta(days=x)).strftime("%Y-%m-%d") for x in range(1, days_to_forecast+1)]
         return jsonify(
             {
                 "code": 200,
+                "timestamps": timestamps,
                 "predictions": predictions
             }
         )
